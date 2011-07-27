@@ -11,7 +11,9 @@ module Mongoid
 
     module ClassMethods
       def localized_field(name, options = {})
-        field name, options.merge(:type => LocalizedField, :default => LocalizedField.new)
+        options[:type] = LocalizedField
+        options[:default] = LocalizedField.new
+        field name, options
       end
 
       def validates_default_locale(names, options = {})
